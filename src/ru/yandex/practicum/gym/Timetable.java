@@ -40,15 +40,15 @@ public class Timetable {
     }
 
     public List<CounterOfTrainings> getCountByCoaches() {
-        Map<Coach, Integer> сoachWithTrainings = new HashMap<>();
+        Map<Coach, Integer> coachWithTrainings = new HashMap<>();
         for (TreeMap<TimeOfDay, List<TrainingSession>> trainingsOfDays : timetable.values()) {
             for (List<TrainingSession> trainingsOfTime : trainingsOfDays.values()) {
                 for (TrainingSession trainingSession : trainingsOfTime) {
                     Coach coach = trainingSession.getCoach();
-                    if (!сoachWithTrainings.containsKey(coach)) {
-                        сoachWithTrainings.put(coach, 1);
+                    if (!coachWithTrainings.containsKey(coach)) {
+                        coachWithTrainings.put(coach, 1);
                     } else {
-                        сoachWithTrainings.put(coach, сoachWithTrainings.get(coach) + 1);
+                        coachWithTrainings.put(coach, coachWithTrainings.get(coach) + 1);
                     }
                 }
             }
@@ -56,7 +56,7 @@ public class Timetable {
 
         List<CounterOfTrainings> countByCoaches = new ArrayList<>();
 
-        for (Map.Entry<Coach, Integer> entry : сoachWithTrainings.entrySet()) {
+        for (Map.Entry<Coach, Integer> entry : coachWithTrainings.entrySet()) {
             CounterOfTrainings coach = new CounterOfTrainings(entry.getKey(), entry.getValue());
             countByCoaches.add(coach);
         }
