@@ -33,6 +33,11 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
         return Objects.hash(hours, minutes);
     }
 
+    @Override
+    public String toString() {
+        return hours + ":" + minutes;
+    }
+
     public int getHours() {
         return hours;
     }
