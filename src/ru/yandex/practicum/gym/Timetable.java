@@ -40,30 +40,30 @@ public class Timetable {
     }
 
     public List<CounterOfTrainings> getCountByCoaches() {
-        Map<Coach, Integer> CoachWithTrainings = new HashMap<>();
+        Map<Coach, Integer> сoachWithTrainings = new HashMap<>();
         for (TreeMap<TimeOfDay, List<TrainingSession>> trainingsOfDays : timetable.values()) {
-            for (List<TrainingSession> TrainingsOfTime : trainingsOfDays.values()) {
-                for (TrainingSession trainingSession : TrainingsOfTime) {
+            for (List<TrainingSession> trainingsOfTime : trainingsOfDays.values()) {
+                for (TrainingSession trainingSession : trainingsOfTime) {
                     Coach coach = trainingSession.getCoach();
-                    if (!CoachWithTrainings.containsKey(coach)) {
-                        CoachWithTrainings.put(coach, 1);
+                    if (!сoachWithTrainings.containsKey(coach)) {
+                        сoachWithTrainings.put(coach, 1);
                     } else {
-                        CoachWithTrainings.put(coach, CoachWithTrainings.get(coach) + 1);
+                        сoachWithTrainings.put(coach, сoachWithTrainings.get(coach) + 1);
                     }
                 }
             }
         }
 
-        List<CounterOfTrainings> CountByCoaches = new ArrayList<>();
+        List<CounterOfTrainings> countByCoaches = new ArrayList<>();
 
-        for (Map.Entry<Coach, Integer> entry : CoachWithTrainings.entrySet()) {
+        for (Map.Entry<Coach, Integer> entry : сoachWithTrainings.entrySet()) {
             CounterOfTrainings coach = new CounterOfTrainings(entry.getKey(), entry.getValue());
-            CountByCoaches.add(coach);
+            countByCoaches.add(coach);
         }
 
-        CountByCoaches.sort(Comparator.comparing(CounterOfTrainings::getCount).reversed());
+        countByCoaches.sort(Comparator.comparing(CounterOfTrainings::getCount).reversed());
 
-        return CountByCoaches;
+        return countByCoaches;
     }
 
 }
