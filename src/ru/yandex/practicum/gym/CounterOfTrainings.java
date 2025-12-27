@@ -1,8 +1,8 @@
 package ru.yandex.practicum.gym;
 
 public class CounterOfTrainings {
-    Coach coach;
-    Integer count;
+    private Coach coach;
+    private Integer count;
 
     CounterOfTrainings(Coach coach, Integer count) {
         this.coach = coach;
